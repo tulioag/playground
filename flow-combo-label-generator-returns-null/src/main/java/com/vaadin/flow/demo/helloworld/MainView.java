@@ -16,7 +16,7 @@
 package com.vaadin.flow.demo.helloworld;
 
 import com.vaadin.router.Route;
-import com.vaadin.ui.button.Button;
+import com.vaadin.ui.combobox.ComboBox;
 import com.vaadin.ui.common.HtmlImport;
 import com.vaadin.ui.layout.VerticalLayout;
 
@@ -27,12 +27,13 @@ import com.vaadin.ui.layout.VerticalLayout;
 @Route("")
 public class MainView extends VerticalLayout {
 
-    public MainView() {
-        ExampleTemplate template = new ExampleTemplate();
+	public MainView() {
+		ComboBox<String> comboBox = new ComboBox<>();
+		// This causes an exception
+		comboBox.setItemLabelGenerator(i -> null);
+		comboBox.setValue(null);
 
-        Button button =  new Button("Click me", event -> template.setValue("Clicked!"));
-
-        add(button, template);
-    }
+		add(comboBox);
+	}
 
 }
